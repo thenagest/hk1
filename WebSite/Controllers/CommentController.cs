@@ -50,13 +50,13 @@ namespace AwaraIt.Hackathon.WebSite.Controllers
             //Context.Database.ExecuteSqlRaw(
             //    string.Format(InsertQuery, commentId, text, id, UserId));
 
-            var comment = await Context.Comments.AddAsync(
+            /*var comment = await Context.Comments.AddAsync(
                 new Comment
                 {
                     Message = text,
                     ImageId = id
                 });
-            await Context.SaveChangesAsync();
+            await Context.SaveChangesAsync();*/
 
             var comment = await Context.Comments.FirstOrDefaultAsync(x => x.Id == commentId);
 
