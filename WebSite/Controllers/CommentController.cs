@@ -46,17 +46,19 @@ namespace AwaraIt.Hackathon.WebSite.Controllers
                 return BadRequest();
 
             var commentId = Guid.NewGuid();
-            Context.Database.ExecuteSqlRaw(
-                string.Format(InsertQuery, commentId, text, id, UserId));
-            var comment = await Context.Comments.FirstOrDefaultAsync(x => x.Id == commentId);
 
-            /*var comment = await Context.Comments.AddAsync(
+            //Context.Database.ExecuteSqlRaw(
+            //    string.Format(InsertQuery, commentId, text, id, UserId));
+
+            var comment = await Context.Comments.AddAsync(
                 new Comment
                 {
                     Message = text,
                     ImageId = id
-                });*/
-            //await Context.SaveChangesAsync();
+                });
+            await Context.SaveChangesAsync();
+
+            var comment = await Context.Comments.FirstOrDefaultAsync(x => x.Id == commentId);
 
             return Json(new CommentVM(comment));
         }
