@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Album";
+}
+
+@model IEnumerable<ImageVM>
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+</div>
+
+<div class="img-container admin">
+    @foreach (var img in Model)
+    {
+        <div style="background-image: url('@img.Url')" data-id="@img.Id" data-comment-number="@img.CommentNumber" data-like-number="@img.LikeNumber" class="img-square"></div>
+    }
+</div>

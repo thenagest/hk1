@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "Picture";
+}
+
+@model ImageVM
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+</div>
+
+<div class="comment-container">
+    <div class="image-box">
+        <div class="big-image" style="background-image: url('@Model.Url')"></div>
+    </div>
+    <div class="comment-list-box">
+        <ul>
+            @foreach(var comment in Model.Comments)
+            {
+                <li class="comment">
+                    <p class="comment-text">@Html.Raw(comment.Text)</p>
+                    <p class="comment-date">@Html.Raw(comment.Date)</p>
+                </li>
+            }
+        </ul>
+        <div class="comment-input">
+            <textarea id="comment" placeholder="Add your comment"></textarea>
+            <button id="send-comment">Publish</button>
+            <input id="image-id" type="hidden" value="@Model.Id" />
+        </div>
+        <div class="like-box">
+            <i id="like" class="far fa-heart @(Model.Liked ? "liked" : "")"></i>
+        </div>
+    </div>
+</div>
